@@ -7,14 +7,14 @@ void    ft_putchar(char c)
 
 void    ft_union(char *s1, char *s2)
 {
-    char     tab[256];
+    char     tab[256] = {0};
     int     i = 0;
 
     while (s1[i])
     {
-        if (tab[s1[i]] == 0)
+        if (tab[(int)s1[i]] == 0)
         {
-            tab[s1[i]] = 1;
+            tab[(int)s1[i]] = 1;
             ft_putchar(s1[i]);
         }
         i++;
@@ -22,9 +22,9 @@ void    ft_union(char *s1, char *s2)
     i = 0;
     while (s2[i])
     {
-        if (tab[s2[i]] == 0)
+        if (tab[(int)s2[i]] == 0)
         {
-            tab[s2[i]] = 1;
+            tab[(int)s2[i]] = 1;
             ft_putchar(s2[i]);
         }
         i++;

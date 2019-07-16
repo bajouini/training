@@ -2,14 +2,14 @@
 
 int		*ft_range(int min, int max)
 {
-	int		n;
-	int		*s;
+	int		len;
+	int		*tab;
 
-	n = max >= min ? max - min : min - max;
-	if (!(s = (int *)malloc(sizeof(int) * (n))))
+	len = max >= min ? max - min : min - max;
+	if (!(tab = (int *)malloc(sizeof(int) * (len))))
 		return (NULL);
 	while (max != min)
-		*s++ = max > min ? min++ : min--;
-	*s = min;
-	return (s - n);
+		*tab++ = max > min ? min++ : min--;
+	*tab = min;
+	return (tab - len);
 }
