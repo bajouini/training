@@ -12,7 +12,7 @@ void    last_word(char *str)
 
     while (str[++i])
     {
-        if (str[i] == ' ' && str[i + 1] >= 33 && str[i + 1] <= 127)
+        if ((str[i] == ' ' || str[i] == '\t') && str[i + 1] >= 33 && str[i + 1] <= 127)
             j = i + 1;
     }
     while (str[j] >= 33 && str[j] <= 127)
