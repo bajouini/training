@@ -1,7 +1,5 @@
 #include <unistd.h>
 
-#include <unistd.h>
-
 int		wdmatch(char *s1, char *s2)
 {
 	while (*s1)

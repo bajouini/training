@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 int     max(int *tab, unsigned int len)
 {
     int             max = tab[0];
