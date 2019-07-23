@@ -1,52 +1,31 @@
 #include <unistd.h>
-
-int     str_len(char *s)
+ 
+void		rev_wstr(char *s, int first)
 {
-    int len = 0;
+	int		start;
+	int		i;
 
-    while (*s)
-    {
-        s++;
-        len++;
-    }
-    return (len);
+	i = 0;
+	if (s[i])
+	{
+		while (s[i] && (s[i] == ' ' || s[i] == '\t'))
+			i++;
+		if (!s[i])
+			return ;
+		start = i;
+		while (s[i] && s[i] != ' ' && s[i] != '\t')
+			i++;
+		rev_wstr(&s[i], 0);
+		write(1, &s[start], i - start);
+		if (!first)
+			write(1, " ", 1);
+	}
 }
 
-int     is_blank(char c)
+int			main(int argc, char **argv)
 {
-    return (c == ' ' || c == '\t');
-}
-
-void    print_reverse(char *s)
-{
-    int fast;
-    int slow;
-    int curr;
-
-    fast = str_len(*s) - 1;
-    slow = fast;
-    curr = fast;
-
-    while (fast >= 0)
-    {
-        slow = fast;
-        curr = fast;
-
-        while (fast >= 0 && !is_blank(s[fast]))
-            fast--;
-        fast++;
-        curr = fast;
-        while (curr <= slow)
-        {
-            write (1, &s[curr], 1);
-            curr++;
-        }
-        if (fast > 0)
-            write(1, " ", 1);
-        fast--;
-        fast--;
-    }
-}
-        
-    }
+	if (argc == 2)
+		rev_wstr(argv[1], 1);
+	write(1, "\n", 1);
+	return (0);
 }
