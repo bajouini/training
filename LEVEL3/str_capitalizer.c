@@ -35,14 +35,16 @@ void	str_capitaliser(char *s)
 
 int		main(int ac, char **av)
 {
+	int i = 1;
 	if (ac > 1)
 	{
-		++av;
-		while (*av)
+		while (av[i])
 		{
-			str_capitaliser(*av++);
+			str_capitaliser(av[i++]);
 			write(1, "\n", 1);
 		}
 	}
+	else
+		write (1, "\n", 1);
 	return (0);
 }

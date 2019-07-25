@@ -3,7 +3,7 @@
 
 int pgcd(unsigned int nb, unsigned int nb2)
 {
-    int i = nb;
+    unsigned int i = nb;
     while (i > 0)
     {
         if (nb % i == 0 && nb2 % i == 0)
