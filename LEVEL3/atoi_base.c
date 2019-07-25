@@ -1,6 +1,6 @@
 int is_blank(char c)
 {
-    return (c < 32);
+    return (c <= 32);
 }
 
 int is_valid(char c, int base)
@@ -37,11 +37,4 @@ int ft_atoi_base(const char *str, int str_base)
     while (is_valid(str[i], str_base))
         res = res * str_base + value_of(str[i++]);
     return (res * sign);
-}
-
-int		main(int ac, char **av)
-{
-	if (ac != 3)
-		return (0);
-	printf("%d\n", ft_atoi_base(av[1], atoi(av[2])));
 }
