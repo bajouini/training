@@ -5,19 +5,17 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int		ft_isspace(char c)
+int		is_blank(char c)
 {
-	if (c == ' ' || c == '\t')
-		return (1);
-	return (0);
+	return (c == ' ' || c == '\t');
 }
 
-int		tolower(char c)
+int		to_lower(char c)
 {
 	return (c += (c >= 'A' && c <= 'Z') ? 32 : 0);
 }
 
-int		toupper(char c)
+int		to_upper(char c)
 {
 	return (c -= (c >= 'a' && c <= 'z') ? 32 : 0);
 }
@@ -26,12 +24,12 @@ void	str_capitaliser(char *s)
 {
 	while (*s)
 	{
-		while (ft_isspace(*s))
+		while (is_blank(*s))
 			ft_putchar(*s++);
-		if (*s && !ft_isspace(*s))
-			ft_putchar(toupper(*s++));
-		while (*s && !ft_isspace(*s))
-			ft_putchar(tolower(*s++));
+		if (*s && !is_blank(*s))
+			ft_putchar(to_upper(*s++));
+		while (*s && !is_blank(*s))
+			ft_putchar(to_lower(*s++));
 	}
 }
 
