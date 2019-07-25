@@ -2,9 +2,10 @@
 
 void    hidenp(char *s1, char *s2)
 {
-    while (*s1 == *s2++)
-        s1++;
-    (*s1 == '\0') ? write(1, "1", 1) : write(1, "0", 1);
+    while (*s2)
+		if (*s1 == *s2++)
+			s1++;
+	(*s1 == '\0') ? write(1, "1", 1) : write(1, "0", 1);
 }
 
 int     main(int ac, char **av)
