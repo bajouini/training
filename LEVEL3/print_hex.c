@@ -1,5 +1,10 @@
 #include <unistd.h>
 
+void    ft_putchar(char c)
+{
+    write (1, &c, 1);
+}
+
 int     is_blank(char c)
 {
     return (c <= 32);
@@ -23,22 +28,20 @@ int     ft_atoi(char *s)
     return ((int)res * sign);
 }
 
-void    print_hex(int n)
+void	print_hex(int n)
 {
-    if (n >= 16)
-        print_hex(n / 16);
-    n = n % 16;
-    if (n < 10)
-        n += '0';
-    else
-        n += 'a' - 10;
-    write (1, &n, 1);
+	int c;
+
+	if (n >= 16)
+		print_hex(n / 16);
+	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);
+	ft_putchar(c);
 }
 
 int     main(int ac, char **av)
 {
     if (ac == 2)
         print_hex(ft_atoi(av[1]));
-    write (1, "\n", 1);
+    ft_putchar('\n');
     return (0);
 }

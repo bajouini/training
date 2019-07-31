@@ -1,35 +1,53 @@
 #include <unistd.h>
 
-int	braclose(char *str, char c, int i, int b)
+int main(int ac, char **av)
 {
-	while (b && *(++str) && (i++))
-		if (*str == c || *str == c + c % 2 + 1)
-			*str == c ? ++b : --b;
-	return (i);
-}
+	int i = 1;
+	int  t[32] = {0}; 
+	int j ;
 
-int	brackets(char *str, char c)
-{
-	if (*str == c)
-		return (1);
-	else if (!*str || *str == ')' || *str == '}' || *str == ']')
-		return (0);
-	else if (*str == '(' || *str == '{' || *str == '[')
-		return (brackets(str + 1, *str + *str % 2 + 1)
-			* brackets(str + braclose(str, *str, 1, 1), c));
-	else
-		return (brackets(str + 1, c));
-}
+	if(ac == 1)
+	{
+		write(1,"options: abcdefghijklmnopqrstuvwxyz\n",36);
+		return 0;
+	}
+	i = 1;
+	while (i < ac)
+	{
+		j = 1;
+		if(av[i][0] == '-')
+		{
+			while(av[i][j] && av[i][j] >= 'a'  && av[i][j] <= 'z')
+			{
+				if(av[i][j] == 'h')
+				{
+					write(1,"options: abcdefghijklmnopqrstuvwxyz\n",36);
+					return 0;
+				}
 
-int	main(int ac, char **av)
-{
-	int	i;
+				t['z' - av[i][j] + 6] = 1;
+				j++;
+			}
 
+			if (av[i][j])
+			{
+				write(1,"Invalid Option\n",15);
+				return 0;
+			}
+			j++;
+		}
+		i++;
+	}
 	i = 0;
-	if (ac > 1)
-		while (++i < ac)
-			brackets(av[i], 0) ? write(1, "OK\n", 3) : write(1, "Error\n", 6);
-	else
-		write(1, "\n", 1);
-	return (0);
+	while (i < 32)
+	{
+	t[i] = '0' + t[i];
+	write(1,&t[i++],1);
+		if(i == 32)
+			write(1,"\n",1);
+		else if(i % 8 == 0)
+			write(1," ",1);
+
+	}
+	return 0;
 }
