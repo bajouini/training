@@ -14,11 +14,9 @@ int len(long nb)
 
 char *ft_itoa(int nbr)
 {
-    char *res;
     long nb = nbr;
     int i = len(nb);
-    if (!(res = (char*)malloc(sizeof(char) * (i + 1))))
-        return (NULL);
+    char *res = (char*)malloc(sizeof(char) * (i + 1));
     res[i--] = '\0';
     if (nb == 0)
         return ((nb == 0) ? "0" : NULL);

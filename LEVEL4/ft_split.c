@@ -52,7 +52,7 @@ char    **ft_split(char *str)
             str++;
         if (*str && !is_blank(*str))
         {
-            tab[i] == cpy_word(str);
+            tab[i] = cpy_word(str);
             i++;
             while (*str && is_blank(*str))
                 str++;

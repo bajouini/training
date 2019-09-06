@@ -3,13 +3,12 @@
 
 void	fprime(unsigned int nb)
 {
-	unsigned int	prime;
+	unsigned int	prime = 2;
 
 	if (nb == 1)
 		printf("1");
 	else
 	{
-		prime = 2;
 		while (nb > 1)
 		{
 			if (nb % prime == 0)
@@ -27,7 +26,7 @@ void	fprime(unsigned int nb)
 
 int		main(int ac, char **av)
 {
-	if (ac == 2 && *av[1])
+	if (ac == 2)
 		fprime(atoi(av[1]));
 	printf("\n");
 	return (0);
