@@ -12,11 +12,9 @@ void	ft_putnbr(int n)
 	ft_putchar(n % 10 + '0');
 }
 
-int		ft_atoi(char *s)
+int		ft_miniatoi(char *s)
 {
-	int		r;
-
-	r = 0;
+	int r = 0;
 	while (*s >= '0' && *s <= '9')
 		r = r * 10 + *s++ - '0';
 	return (r);
@@ -39,7 +37,7 @@ void	tab_mult(int n)
 int		main(int ac, char **av)
 {
 	if (ac == 2)
-		tab_mult(ft_atoi(av[1]));
+		tab_mult(ft_miniatoi(av[1]));
 	else
 		write(1, "\n", 1);
 	return (0);

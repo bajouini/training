@@ -31,7 +31,6 @@ int     ft_atoi(char *s)
 void	print_hex(int n)
 {
 	int c;
-
 	if (n >= 16)
 		print_hex(n / 16);
 	c = n % 16 + (n % 16 < 10 ? '0' : 'a' - 10);

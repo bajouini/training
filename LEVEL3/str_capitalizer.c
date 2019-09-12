@@ -1,35 +1,33 @@
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 int		is_blank(char c)
 {
 	return (c == ' ' || c == '\t');
 }
 
-int		to_lower(char c)
+int		is_alpha(char c)
 {
-	return (c += (c >= 'A' && c <= 'Z') ? 32 : 0);
+	return (c >= 'a' && c <= 'z');
 }
 
-int		to_upper(char c)
+int		is_ALPHA(char c)
 {
-	return (c -= (c >= 'a' && c <= 'z') ? 32 : 0);
+	return (c >= 'A' && c <= 'Z');
 }
 
-void	str_capitaliser(char *s)
+void	str_capitalizer(char *str)
 {
-	while (*s)
+	int i = 0;
+	if (is_alpha(str[i]))
+		str[i] -= 32;
+	write (1, &str[i], 1);
+	while (str[++i])
 	{
-		while (is_blank(*s))
-			ft_putchar(*s++);
-		if (*s && !is_blank(*s))
-			ft_putchar(to_upper(*s++));
-		while (*s && !is_blank(*s))
-			ft_putchar(to_lower(*s++));
+		if (is_ALPHA(str[i]))
+			str[i] += 32;
+		if ((is_alpha(str[i])) && (is_blank(str[i - 1])))
+			str[i] -= 32;
+		write (1, &str[i], 1);
 	}
 }
 
@@ -40,8 +38,8 @@ int		main(int ac, char **av)
 	{
 		while (av[i])
 		{
-			str_capitaliser(av[i++]);
-			write(1, "\n", 1);
+			str_capitalizer(av[i++]);
+			write (1, "\n", 1);
 		}
 	}
 	else
